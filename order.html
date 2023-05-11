@@ -1,0 +1,185 @@
+<html>
+
+<head>
+
+<link rel="stylesheet"type="text/css"href="C:\Users\arund\Documents\ip\style.css">
+
+<h3 id="heading3">ORDER PROCESSING</h3>
+
+<style>
+
+body
+
+{
+
+background-color:skyblue;
+
+}
+
+</style>
+
+<script>
+
+function validate()
+
+{
+
+var name=document.placeorder.type.value;
+
+var qty=document.placeorder.qty.value;
+
+var adr=document.placeorder.addr.value;
+
+var pinc=document.placeorder.pin.value;
+
+var amt=0;
+
+if(adr=="")
+
+{
+
+document.getElementById('adrerr').innerHTML="*required";
+
+return false;
+
+}
+
+else if(pinc==""||isNaN(pinc))
+
+{
+
+document.getElementById("pinerr").innerHTML="*required/type mismatchs";
+
+return false;
+
+}
+
+else
+
+{
+
+var k=0;
+
+if((qty>0)&&(qty<2))
+
+k=1;
+
+else if((qty>1)&&(qty<3))
+
+k=2;
+
+else
+
+k=3;
+
+if(name=="dairy milk")
+
+amt=200;
+
+else if(name=="5star")
+
+amt=250;
+
+else
+
+amt=300;
+
+var con=confirm("selected type:"+name+"\n no.of.qty:"+k+"\n Total Amount:"+(amt*k)+"\n are you sure to proceed?:");
+
+if(con==true)
+
+window.open("new.html");
+
+else
+
+return false;
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body bgcolor="verdana"text="blue">
+
+<hr>
+
+<form name="placeorder" action="" method="post" onsubmit='return validate();'>
+
+<br/>
+
+<b>type</b>
+
+<select name='type'size=0>
+
+<option>select</option>
+
+<option>dairy milk</option>
+
+<option>5star</option>
+
+<option>bounty</option>
+
+</select>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<b>Quantity</b>
+
+<select name="qty"size=0>
+
+<option>select</option>
+
+<option>1</option>
+
+<option>2</option>
+
+<option>3</option>
+
+</select>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<b>Delivery Address</b>
+
+<textarea rows=4 cols=28 name="addr">
+
+</textarea><span id="adrerr"></span>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<b>pincode</b>
+
+<input type="text"name="pin"value="">
+
+<span id="pinerr"></span>
+
+<hr>
+
+<br/>
+
+<input type="submit"value="placeorder">
+
+<br/>
+
+<br/>
+
+</form>
+
+</body>
+
+</html>
